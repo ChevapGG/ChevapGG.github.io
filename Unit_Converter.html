@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<script src="Unit_ConverterV2.js"></script>
+<link rel="stylesheet" type="text/css" href="Unit_Converter.css">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Unit Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Author: Dominic Berge
+                                      Description: This tool converts different units into each other. It is a calculator">
+</head>
+<body onload="populate('list1', 'list2', 'list3'); Converter('l_nr', 'r_nr');">
+
+
+    <h2 id="uc">Unit Converter</h2>
+
+    <div class="main_selection">
+        <select aria-labelledby="uc" name="list1" id="list1" onchange="getSelectValue(this.id), populate(this.id, 'list2', 'list3'); Converter('l_nr', 'r_nr');" , class="block">
+            <option value="ds">data size</option>
+            <option value="le">length</option>
+            <option value="mass">mass</option>
+            <option value="temp">temperature</option>
+        </select>
+    </div>
+
+
+
+    <div class="grid-container" id= "container">
+
+        
+            <div class="left_tf" id="id_left_tf">
+                <!-- linkes Textfeld-->
+                <input type="text" id="l_nr" value="1" class="block" oninput="Converter('l_nr', 'r_nr');" onchange="Converter('l_nr', 'r_nr');" aria-labelledby="container id_left_tf" placeholder="write the number you want to convert in this textfield">
+            </div>
+        
+                                 
+
+      <div class="equals">
+
+          =
+
+      </div>
+
+
+        
+            <div class="right_tf" id="id_right_tf">
+                <input type="text" id="r_nr" value="" class="block" oninput="Converter('r_nr', 'l_nr');" onchange="Converter('r_nr', 'l_nr');" aria-labelledby="container id_right_tf">
+            </div>
+        
+
+
+        
+            <div class="left_selection" id="id_left_selection">
+                <select id="list2" onchange="getSelectValue(this.id), Converter('l_nr', 'l_nr');" class="block" aria-labelledby="container id_left_selection"></select>
+            </div>
+        
+
+
+        <div></div>
+
+
+
+        
+            <div class="right_selection" id="id_right_selection">
+                <select id="list3" onchange="getSelectValue(this.id), Converter('r_nr', 'r_nr');" class="block" aria-labelledby="container id_right_selection"></select>
+            </div>
+        
+
+
+
+    </div>
+
+
+
+
+
+</body>
+</html>

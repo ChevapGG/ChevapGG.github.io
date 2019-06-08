@@ -1,0 +1,74 @@
+﻿h2
+{
+    text-align: center;
+    font-size: 35px;
+}
+
+.main_selection
+{
+    background-color: DodgerBlue;
+    margin: auto;
+    width: 75%;
+}
+
+.left_tf {
+    width: 1fr;
+    border: none;
+    font-size: 16px;
+    margin-top:5px;
+} 
+
+.equals {
+    font-size: 300%;
+    text-align: center;
+}
+
+.right_tf {
+    width: 1fr;
+    border: none;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.left_selection {
+    display: block;
+    width: 1fr;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0px;
+}
+
+.right_selection {
+    display: block;
+    width: 1fr;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0px;
+}
+
+.block
+{
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: dodgerblue;
+    padding: 14px 0px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+   
+}
+
+.grid-container
+{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr 5% 1fr);
+    grid-template-rows: 1fr;
+    background-color: white;
+    margin: auto;
+    width: 75%
+}
