@@ -1,6 +1,10 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
-  '/'
+  '/Unit_Converter.html',
+  '/Unit_Converter.css',
+  '/Unit_ConverterV2.js',
+  '/TA.png',
+  '/TA-192x192.png'
 ];
 
 self.addEventListener('install', function(event) {
