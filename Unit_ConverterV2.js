@@ -84,7 +84,7 @@ console.log("Der Converter ist hart getriggert")
 
 //catch undefined from memory to avoid unexpected behavior
 if (typeof memory.left === "undefined") { // === to avoid implicit conversions 
-    {memory.left = 0;}
+    memory.left = 0;}
     if (typeof memory.right === "undefined") { // === to avoid implicit conversions 
         {memory.left = 1;}
 
