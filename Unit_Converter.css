@@ -19,8 +19,11 @@
 } 
 
 .equals {
-    font-size: 300%;
+    font-size: 3vw;
     text-align: center;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    margin-top: 5px;
 }
 
 .right_tf {
@@ -38,6 +41,7 @@
     cursor: pointer;
     text-align: center;
     margin: 0px;
+    margin-top: 1%;
 }
 
 .right_selection {
@@ -48,6 +52,7 @@
     cursor: pointer;
     text-align: center;
     margin: 0px;
+    margin-top: 1%;
 }
 
 .block

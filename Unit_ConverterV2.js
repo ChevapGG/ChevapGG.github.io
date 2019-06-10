@@ -14,7 +14,7 @@ function populate(s1, s2, s3) {
     s3.innerHTML = "";
 
     if (s1.value == "ds") {
-        var optionArray = ["1|Bit", "1000|Kilobit", "1024|Kibibit", "1000000|Megabit", "1049000|Mebibit", "1000000000|Gigabit", "1074000000|Gibibit", "8|Byte", "8000|Kilobyte", "8192|Kibibyte", "0,00000125|Megabyte", "0,0000011921|Mebibyte", "0,00000000125|Gigabyte", "0,0000000011642|Gibibyte"];
+        var optionArray = ["1|Bit", "1000|Kilobit", "1024|Kibibit", "1000000|Megabit", "1049000|Mebibit", "1000000000|Gigabit", "1074000000|Gibibit", "8|Byte", "8000|Kilobyte", "8192|Kibibyte", "8000000|Megabyte", "8389000|Mebibyte"];
     }
     if (s1.value == "le") {
         var optionArray = ["1|Micrometre", "1000|Milimetre", "10000|Centimetre", "1000000|Metre", "1000000000|Kilometre"];
@@ -77,11 +77,19 @@ function Converter(source, target, element_nr) {
     source = document.getElementById(source);
     target = document.getElementById(target);
 
+
+    //catch "wrong" input
+    source.value = source.value.replace(/[^0-9.]/g,'');
+    target.value = target.value.replace(/[^0-9.]/g,'');
+
+
     //catch undefined memory to avoid unexpected behavior
     if (typeof memory.left === "undefined")              // === to avoid implicit conversions 
        memory.left = 0;
     if (typeof memory.right === "undefined")
          memory.left = 1;
+
+
 
     //prevents the unit from being converted to the same unit
     if (sourcelist.selectedIndex == targetlist.selectedIndex) {
@@ -90,7 +98,13 @@ function Converter(source, target, element_nr) {
     }
 
     //this formula calculates the actual conversion to other units
-    target.value = sourcelist.value / targetlist.value * source.value
+
+    x = sourcelist.value / targetlist.value * source.value
+
+    if (x == 'NaN')  //this makes it possible to start with a point and omit the zero at the beginning without the NaN appearing on the screen.
+         target.value =''; 
+    else    
+        target.value = x;
 
     //save state
     memory.left = list2.selectedIndex
