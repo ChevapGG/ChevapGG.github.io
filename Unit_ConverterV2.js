@@ -83,11 +83,6 @@ console.log("Der Converter ist hart getriggert")
 
 
 //catch undefined from memory to avoid unexpected behavior
-if (typeof memory.left === "undefined") { // === to avoid implicit conversions 
-    memory.left = 0;}
-    if (typeof memory.right === "undefined") { // === to avoid implicit conversions 
-        {memory.left = 1;}
-
 
     if (source == 'l_nr') {
         sourcelist = document.getElementById('list2');
@@ -118,6 +113,18 @@ if (typeof memory.left === "undefined") { // === to avoid implicit conversions
     console.log("l mem" + memory.left)
     console.log("r mem" + memory.right)
     console.log("hi git pls update")
+
+//catch undefined from memory to avoid unexpected behavior
+    if (typeof memory.left === "undefined") { // === to avoid implicit conversions 
+       memory.left = 0;}
+    if (typeof memory.right === "undefined") { // === to avoid implicit conversions 
+         memory.left = 1;}
+
+
+
+
+
+
 
     //tauschen zum alten wert also speicher was
     if (sourcelist.selectedIndex == targetlist.selectedIndex) {
