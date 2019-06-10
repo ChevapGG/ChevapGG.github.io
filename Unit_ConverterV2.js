@@ -82,6 +82,11 @@ console.log("Der Converter ist hart getriggert")
     //r_nr => list3
 
 
+//catch undefined from memory to avoid unexpected behavior
+if (typeof memory.left === "undefined") { // === to avoid implicit conversions 
+    {memory.left = 0;}
+    if (typeof memory.right === "undefined") { // === to avoid implicit conversions 
+        {memory.left = 1;}
 
 
     if (source == 'l_nr') {
