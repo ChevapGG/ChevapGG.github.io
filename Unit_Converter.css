@@ -77,3 +77,24 @@
     margin: auto;
     width: 75%
 }
+
+.notification{
+    background-color: dodgerblue;
+}
+
+#update_here {
+    visibility: hidden;
+    background-color: red;
+    color: black;
+    text-align: center;
+    padding: 16px;
+
+  }
+
+  #update_here.show {
+    visibility: visible;
+  }
+
+  #update_here.hide {
+      visibility: hidden;
+  }
