@@ -108,8 +108,11 @@ console.log("Der Converter ist hart getriggert")
     
 
 
-    console.log("sourcelist Index = " + sourcelist.selectedIndex)
-    console.log("targetlist Index = " + targetlist.selectedIndex)
+    console.log("sourcelist akt.Index = " + sourcelist.selectedIndex)
+    console.log("targetlist akt.Index = " + targetlist.selectedIndex)
+    console.log("l mem" + memory.left)
+    console.log("r mem" + memory.right)
+    
 
     //tauschen zum alten wert also speicher was
     if (sourcelist.selectedIndex == targetlist.selectedIndex) {
@@ -128,47 +131,6 @@ console.log("Der Converter ist hart getriggert")
 
     //target.value = sourcelist.value / targetlist.value * source.value
     target.value = sourcelist.value / targetlist.value * source.value
-
-
-
-  console.log("---------------");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-    console.log("source.value: " + source.value + " target.value: " + target.value)
-    
-    console.log("sourcelist.value: " + sourcelist.value +" / " + "targetlist.value" + targetlist.value +" * "+ "source.value "+source.value)
-    
-
-
-    if (sourcelist.selectedIndex < targetlist.selectedIndex){
-    target.value = sourcelist.value / targetlist.value * source.value
-    console.log("muss groesser werden")
-    }
-
-    if (sourcelist.selectedIndex > targetlist.selectedIndex){
-    target.value = targetlist.value / sourcelist.value * source.value
-    console.log("muss kleiner werden")
-    }
-
-
-
-
-*/
 
     //save state
     memory.left = list2.selectedIndex
