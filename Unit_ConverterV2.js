@@ -105,20 +105,13 @@ console.log("Der Converter ist hart getriggert")
 
         var source = document.getElementById(source);
         var target = document.getElementById(target);
-    
 
-
-    console.log("sourcelist akt.Index = " + sourcelist.selectedIndex)
-    console.log("targetlist akt.Index = " + targetlist.selectedIndex)
-    console.log("l mem" + memory.left)
-    console.log("r mem" + memory.right)
-    console.log("hi git pls update")
 
 //catch undefined from memory to avoid unexpected behavior
     if (typeof memory.left === "undefined") { // === to avoid implicit conversions 
-       memory.left = 0;}
+       memory.left = 0; console.log('fixed it?')}
     if (typeof memory.right === "undefined") { // === to avoid implicit conversions 
-         memory.left = 1;}
+         memory.left = 1; console.log("fixed it?")}
 
 
 
@@ -128,9 +121,8 @@ console.log("Der Converter ist hart getriggert")
 
     //tauschen zum alten wert also speicher was
     if (sourcelist.selectedIndex == targetlist.selectedIndex) {
-        console.log("oh nein, du sollst das nicht tuen :0")
-        if (sourcelist == 'list2') { sourcelist.selectedIndex = memory.right; targetlist.selectedIndex = memory.left; console.log("altes links nach rechts") }
-        if (sourcelist == 'list3') { sourcelist.selectedIndex = memory.left; targetlist.selectedIndex = memory.right; console.log("altes rechts nach links") }
+        if (sourcelist.id == 'list2') { sourcelist.selectedIndex = memory.right; targetlist.selectedIndex = memory.left; console.log("altes links nach rechts") }
+        if (sourcelist.id == 'list3') { sourcelist.selectedIndex = memory.left; targetlist.selectedIndex = memory.right; console.log("altes rechts nach links") }
     }
 
 
@@ -138,17 +130,12 @@ console.log("Der Converter ist hart getriggert")
   memory.left = list2.selectedIndex
   memory.right = list3.selectedIndex
 
-  console.log(" hier bin ich!" + memory.left + " " + memory.right)
-
-
     //target.value = sourcelist.value / targetlist.value * source.value
     target.value = sourcelist.value / targetlist.value * source.value
 
     //save state
     memory.left = list2.selectedIndex
     memory.right = list3.selectedIndex
-
-    console.log(" hier bin ich!" + memory.left + " " + memory.right)
 
     console.log("---------------");
 }           //ende von converter
