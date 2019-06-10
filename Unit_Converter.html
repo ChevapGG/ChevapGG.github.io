@@ -34,7 +34,7 @@
         
             <div class="left_tf" id="id_left_tf">
                 <!-- linkes Textfeld-->
-                <input type="text" id="l_nr" value="1" class="block" oninput="Converter('l_nr', 'r_nr');" onchange="Converter('l_nr', 'r_nr');" aria-labelledby="container id_left_tf" placeholder="write the number you want to convert in this textfield">
+                <input type="text" id="l_nr" value="1" class="block" oninput="Converter('l_nr', 'r_nr', 1);" /*onchange="Converter('l_nr', 'r_nr', 1);"*/ aria-labelledby="container id_left_tf">
             </div>
         
                                  
@@ -48,25 +48,24 @@
 
         
             <div class="right_tf" id="id_right_tf">
-                <input type="text" id="r_nr" value="" class="block" oninput="Converter('r_nr', 'l_nr');" onchange="Converter('r_nr', 'l_nr');" aria-labelledby="container id_right_tf">
+                <input type="text" id="r_nr" value="" class="block" oninput="Converter('r_nr', 'l_nr', 2);" /*onchange="Converter('r_nr', 'l_nr', 2);"*/ aria-labelledby="container id_right_tf">
             </div>
         
 
 
         
             <div class="left_selection" id="id_left_selection">
-                <select id="list2" onchange="getSelectValue(this.id), Converter('l_nr', 'l_nr');" class="block" aria-labelledby="container id_left_selection"></select>
+                <select id="list2" onchange="getSelectValue(this.id), Converter('l_nr', 'r_nr', 3);" class="block" aria-labelledby="container id_left_selection"></select>
             </div>
         
 
 
-        <div></div>
-
+        <div></div> <!-- nötig um das Layout beizubehalten -->
 
 
         
             <div class="right_selection" id="id_right_selection">
-                <select id="list3" onchange="getSelectValue(this.id), Converter('r_nr', 'r_nr');" class="block" aria-labelledby="container id_right_selection"></select>
+                <select id="list3" onchange="getSelectValue(this.id), Converter('l_nr', 'r_nr', 4);" class="block" aria-labelledby="container id_right_selection"></select>
             </div>
         
 
@@ -79,7 +78,7 @@
 
 
 </body>
-<script>
+<script>                                                //service worker registrieren
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/sw.js').then(function(registration) {

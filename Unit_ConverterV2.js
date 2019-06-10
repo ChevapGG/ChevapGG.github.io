@@ -1,8 +1,7 @@
 // JavaScript source code
 
 
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
+
 
 function getSelectValue(s1) {
     var s1;
@@ -51,7 +50,7 @@ function populate(s1, s2, s3) {
     s3.selectedIndex = "1";
 }
 
-function getSelectedOption(sel) { //gibt die selektierte option aus (für die listen) //legacy?, da besser weg gefunden
+function getSelectedOption(sel) { //gibt die selektierte option aus (fï¿½r die listen) //legacy?, da besser weg gefunden
     var opt;
     for (var i = 0, len = document.getElementById(sel).options.length; i < len; i++) {
         opt = document.getElementById(sel).options[i];
@@ -71,7 +70,9 @@ function memory() { //stellt public vars bereit
 
 ////////////////////////////////////////////////// Converter Funktion / Alle berechnungen /////////////////////////////////////////////////////////////
 
-function Converter(source, target) {    //nr = tf , list = option // number = wert der umgerechnet werden soll
+function Converter(source, target, element_nr) {    //nr = tf , list = option // number = wert der umgerechnet werden soll
+
+console.log("Der Converter ist hart getriggert")
 
     var sourceopt;
     var targetopt;
@@ -84,12 +85,17 @@ function Converter(source, target) {    //nr = tf , list = option // number = we
 
 
     if (source == 'l_nr') {
-        sourcelist = document.getElementById('list2'); console.log("sourcelist gesetzt");
-        targetlist = document.getElementById('list3')
-    } else {
-        sourcelist = document.getElementById('list3'); console.log("sourcelist gesetzt");
-        targetlist = document.getElementById('list2')
+        sourcelist = document.getElementById('list2');
+    }else{
+        sourcelist = document.getElementById('list3');
     }
+
+    if (target == 'l_nr'){
+        targetlist = document.getElementById('list2');
+    }else{
+        targetlist = document.getElementById('list3');
+    }
+
 
     if (source == 'l_nr')
         console.log("Source == links") 
@@ -97,31 +103,78 @@ function Converter(source, target) {    //nr = tf , list = option // number = we
         console.log("Source == rechts")
 
 
+        var source = document.getElementById(source);
+        var target = document.getElementById(target);
+    
 
 
-    var source = document.getElementById(source);
-    var target = document.getElementById(target);
-
+    console.log("sourcelist Index = " + sourcelist.selectedIndex)
+    console.log("targetlist Index = " + targetlist.selectedIndex)
 
     //tauschen zum alten wert also speicher was
     if (sourcelist.selectedIndex == targetlist.selectedIndex) {
         console.log("oh nein, du sollst das nicht tuen :0")
-        if (sourcelist == 'list2') { var mem = memory.left; console.log("altes links nach rechts") }
-        if (sourcelist == 'list3') { var mem = memory.right; console.log("altes rechts nach links") }
-        console.log("Du hast folgende liste angeklickt: " + document.getElementById(sourcelist))
-        sourcelist.selectedIndex = targetlist.selectedIndex
-        targetlist.selectedIndex = mem
+        if (sourcelist == 'list2') { sourcelist.selectedIndex = memory.right; targetlist.selectedIndex = memory.left; console.log("altes links nach rechts") }
+        if (sourcelist == 'list3') { sourcelist.selectedIndex = memory.left; targetlist.selectedIndex = memory.right; console.log("altes rechts nach links") }
     }
 
-    console.log("source.value: " + source.value + " target.value: " + target.value)
-    console.log("sourcelist.value: " + sourcelist.value + " targetlist.value: " + targetlist.value)
 
+      //save state
+  memory.left = list2.selectedIndex
+  memory.right = list3.selectedIndex
+
+  console.log(" hier bin ich!" + memory.left + " " + memory.right)
+
+
+    //target.value = sourcelist.value / targetlist.value * source.value
     target.value = sourcelist.value / targetlist.value * source.value
+
+
+
+  console.log("---------------");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    console.log("source.value: " + source.value + " target.value: " + target.value)
+    
+    console.log("sourcelist.value: " + sourcelist.value +" / " + "targetlist.value" + targetlist.value +" * "+ "source.value "+source.value)
+    
+
+
+    if (sourcelist.selectedIndex < targetlist.selectedIndex){
+    target.value = sourcelist.value / targetlist.value * source.value
+    console.log("muss groesser werden")
+    }
+
+    if (sourcelist.selectedIndex > targetlist.selectedIndex){
+    target.value = targetlist.value / sourcelist.value * source.value
+    console.log("muss kleiner werden")
+    }
+
+
+
+
+*/
 
     //save state
     memory.left = list2.selectedIndex
     memory.right = list3.selectedIndex
 
+    console.log(" hier bin ich!" + memory.left + " " + memory.right)
 
     console.log("---------------");
 }           //ende von converter
@@ -131,7 +184,7 @@ function Converter(source, target) {    //nr = tf , list = option // number = we
 
 
 /*  Kommentar Bereich:
- *      Ließ dir die bewertungskriterien nochmal durch!
+ *      Lieï¿½ dir die bewertungskriterien nochmal durch!
  *  
  *  
  */
