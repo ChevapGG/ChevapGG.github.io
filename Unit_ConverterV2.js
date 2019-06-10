@@ -112,7 +112,7 @@ console.log("Der Converter ist hart getriggert")
     console.log("targetlist akt.Index = " + targetlist.selectedIndex)
     console.log("l mem" + memory.left)
     console.log("r mem" + memory.right)
-    
+    console.log("hi git pls update")
 
     //tauschen zum alten wert also speicher was
     if (sourcelist.selectedIndex == targetlist.selectedIndex) {
