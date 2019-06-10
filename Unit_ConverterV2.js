@@ -1,13 +1,10 @@
-// JavaScript source code
-
-
-
-
+//this function takes an Element and returns the value 
 function getSelectValue(s1) {
     var s1;
     var selectedValue = document.getElementById(s1).value;
 }
 
+//this function is called when the physical size is changed or when the PWA loads for the first time
 function populate(s1, s2, s3) {
     var s1 = document.getElementById(s1);
     var s2 = document.getElementById(s2);
@@ -50,102 +47,53 @@ function populate(s1, s2, s3) {
     s3.selectedIndex = "1";
 }
 
-function getSelectedOption(sel) { //gibt die selektierte option aus (f�r die listen) //legacy?, da besser weg gefunden
-    var opt;
-    for (var i = 0, len = document.getElementById(sel).options.length; i < len; i++) {
-        opt = document.getElementById(sel).options[i];
-        if (opt.selected === true) {
-            break;
-        }
-    }
-    return opt;
-}
-
-
-function memory() { //stellt public vars bereit 
+//this is used to store the last selection because onchange triggers after the change and the old selection gets lost
+function memory() {
     this.left = 0;
     this.right = 1;
 }
 
+//this function takes care of the conversions
+function Converter(source, target, element_nr) {
 
-////////////////////////////////////////////////// Converter Funktion / Alle berechnungen /////////////////////////////////////////////////////////////
-
-function Converter(source, target, element_nr) {    //nr = tf , list = option // number = wert der umgerechnet werden soll
-
-console.log("Der Converter ist hart getriggert")
-
-    var sourceopt;
-    var targetopt;
+    // declare variables
     var sourcelist;
     var targetlist;
-    //l_nr => list2
-    //r_nr => list3
+    var source;
+    var target;
 
-
-//catch undefined from memory to avoid unexpected behavior
-
-    if (source == 'l_nr') {
-        sourcelist = document.getElementById('list2');
-    }else{
-        sourcelist = document.getElementById('list3');
-    }
-
-    if (target == 'l_nr'){
-        targetlist = document.getElementById('list2');
-    }else{
-        targetlist = document.getElementById('list3');
-    }
-
-
+    // sets source and target according to the sequence of values passed to the function
     if (source == 'l_nr')
-        console.log("Source == links") 
+        sourcelist = document.getElementById('list2');
     else
-        console.log("Source == rechts")
+        sourcelist = document.getElementById('list3');
 
+    if (target == 'l_nr')
+        targetlist = document.getElementById('list2');
+    else
+        targetlist = document.getElementById('list3');
+    
+    //preparation for further processing
+    source = document.getElementById(source);
+    target = document.getElementById(target);
 
-        var source = document.getElementById(source);
-        var target = document.getElementById(target);
+    //catch undefined memory to avoid unexpected behavior
+    if (typeof memory.left === "undefined")              // === to avoid implicit conversions 
+       memory.left = 0;
+    if (typeof memory.right === "undefined")
+         memory.left = 1;
 
-
-//catch undefined from memory to avoid unexpected behavior
-    if (typeof memory.left === "undefined") { // === to avoid implicit conversions 
-       memory.left = 0; console.log('fixed it?')}
-    if (typeof memory.right === "undefined") { // === to avoid implicit conversions 
-         memory.left = 1; console.log("fixed it?")}
-
-
-
-
-
-
-
-    //tauschen zum alten wert also speicher was
+    //prevents the unit from being converted to the same unit
     if (sourcelist.selectedIndex == targetlist.selectedIndex) {
-        if (sourcelist.id == 'list2') { sourcelist.selectedIndex = memory.right; targetlist.selectedIndex = memory.left; console.log("altes links nach rechts") }
-        if (sourcelist.id == 'list3') { sourcelist.selectedIndex = memory.left; targetlist.selectedIndex = memory.right; console.log("altes rechts nach links") }
+        if (sourcelist.id == 'list2') { sourcelist.selectedIndex = memory.right; targetlist.selectedIndex = memory.left; }
+        if (sourcelist.id == 'list3') { sourcelist.selectedIndex = memory.left; targetlist.selectedIndex = memory.right; }
     }
 
-
-      //save state
-  memory.left = list2.selectedIndex
-  memory.right = list3.selectedIndex
-
-    //target.value = sourcelist.value / targetlist.value * source.value
+    //this formula calculates the actual conversion to other units
     target.value = sourcelist.value / targetlist.value * source.value
 
     //save state
     memory.left = list2.selectedIndex
     memory.right = list3.selectedIndex
 
-    console.log("---------------");
-}           //ende von converter
-
-
-
-
-
-/*  Kommentar Bereich:
- *      Lie� dir die bewertungskriterien nochmal durch!
- *  
- *  
- */
+}
