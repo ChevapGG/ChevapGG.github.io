@@ -17,13 +17,13 @@ function populate(s1, s2, s3) {
         var optionArray = ["1|Bit", "1000|Kilobit", "1024|Kibibit", "1000000|Megabit", "1049000|Mebibit", "1000000000|Gigabit", "1074000000|Gibibit", "8|Byte", "8000|Kilobyte", "8192|Kibibyte", "0,00000125|Megabyte", "0,0000011921|Mebibyte", "0,00000000125|Gigabyte", "0,0000000011642|Gibibyte"];
     }
     if (s1.value == "le") {
-        var optionArray = ["1|Micrometre", "0,001|Milimetre", "0,0001|Centimetre", "0,000001|Metre", "0,000000009|Kilometre"];
+        var optionArray = ["1|Micrometre", "1000|Milimetre", "10000|Centimetre", "1000000|Metre", "1000000000|Kilometre"];
     }
     if (s1.value == "mass") {
-        var optionArray = ["1|Microgram", "0,001|Milligram", "0,000001|Gram", "0,000000009|Kilogram", "0,000000000009|Tonne"];
+        var optionArray = ["1|Microgram", "1000|Milligram", "1000000|Gram", "1000000000|Kilogram", "1000000000000|Tonne"];
     }
-    if (s1.value == "temp") {
-        var optionArray = ["1|Celsius", "9/5+32|Fahrenheit", "1+273,15|Kelvin"];
+    if (s1.value == "time") {
+        var optionArray = ["1|Second", "60|Minute", "36000|Hour", "86400|Day", "604800|Week"];
     }
 
     for (var option in optionArray) {
